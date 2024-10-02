@@ -27,7 +27,7 @@ body{
    display: grid;
    place-items: center;
    min-height: 100vh;
-   background: var(--light-blue);
+   background: var(--magnolia);
 }
 .hide{
    display: none;
@@ -44,6 +44,7 @@ body{
    
    display: flex;
    justify-content: space-between;
+   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
 }
 .side-bar{
    width: 250px;
@@ -206,8 +207,7 @@ body{
    gap: 2rem;
 }
 .plans .plan{
-   /* min-width: 100px; */
-   min-height: 150px;
+   height: 150px;
    flex: 1;
    flex-shrink: 0;
    display: flex;
@@ -226,9 +226,10 @@ body{
    border-color: var(--marine-blue);
 }
 .plan img{
+   flex-shrink: 0;
    width: 35px;
    aspect-ratio: 1;
-   object-fit: cover;
+   object-fit: contain;
 }
 .plan h3{
    font-size: 1.5rem;
@@ -446,5 +447,67 @@ body{
 @media screen and (max-width: 991px) {
    html{
       font-size: 55%;
+   }
+}
+
+@media screen and (max-width: 680px) {
+   body{
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding-top: 15vh;
+   }
+   .container{
+      height: unset;
+      border-radius: 0.8rem;
+   }
+   .side-bar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 3rem 5% 15vh;
+      z-index: -1;
+      border-radius: 0;
+      
+      background: var(--purplish-blue) url("/assets/images/bg-sidebar-mobile.svg");
+      background-size: cover;
+   }
+   .side-bar .steps{
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+   }
+   .step > div:last-child {
+      display: none;
+   }
+   
+   .main-section{
+      padding: 2rem 1rem;
+   }
+   .navigation-buttons{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 2rem 5%;
+      background: var(--white);
+   }
+   .navigation-buttons:has(.confirm-btn.hide):has(.next-step-btn.hide){
+      display: none;
+   }
+   
+   .plans{
+      flex-direction: column;
+      gap: 1.5rem;
+   }
+   .plans .plan{
+      height: unset;
+      flex-direction: row;
+      justify-content: unset;
+      gap: 2rem;
+   }
+   .thank-you{
+      padding: 6rem 0;
    }
 }
